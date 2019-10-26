@@ -1,5 +1,4 @@
 import React from 'react';
-import add from './Clicker/Clicker';
 import './App.css';
 
 class App extends React.Component {
@@ -7,14 +6,39 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      input: ''
+      input: 0
+    }
+  }
+
+  addOne = () => {
+    this.setState({
+      input: this.state.input + 1
+    })
+  }
+
+  minusOne = () => {
+    this.setState({
+      input: this.state.input - 1
+    })
+  }
+
+  moreThan5 = () => {
+    if(this.state.input >= 5){
+      return alert("Hello")
     }
   }
 
   render() {
     return(
       <div className="app">
-        <add />
+        <h1>{this.state.input}</h1>
+        <button onClick={()=> {
+          this.addOne(); 
+          this.moreThan5()
+          }}>+
+        </button>
+        <button onClick={this.minusOne}>-</button>
+        
       </div>
     )
   }
